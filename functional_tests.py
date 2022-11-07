@@ -40,7 +40,7 @@ class NewVisitorTest(unittest.TestCase):
         # "1: Buy peacock feathers" as an item in a to-do list
         input_box.send_keys(Keys.ENTER)
         time.sleep(1)
-        self.check_for_row_in_list_table("1:Buy peacock feathers")
+        self.check_for_row_in_list_table("1: Buy peacock feathers")
 
         # There is still a text box inviting her to add another item. She
         # enters "Use peacock feathers to make a fly" (Edith is very methodical)
@@ -58,6 +58,7 @@ class NewVisitorTest(unittest.TestCase):
         # explanatory text to that effect.
 
         # She visits that URL - her to-do list is still there.
+        self.fail('Finish the test')
 
 if __name__ == '__main__':
     unittest.main()
