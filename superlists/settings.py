@@ -30,7 +30,7 @@ ALLOWED_HOSTS = ['*']
 
 
 # Allow trusted origins
-CSRF_TRUSTED_ORIGINS = ['http://travit-staging.ca']
+CSRF_TRUSTED_ORIGINS = ['http://travit-staging.ca', 'http://99.79.31.227']
 
 
 # Application definition
