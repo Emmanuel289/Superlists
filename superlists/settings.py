@@ -29,6 +29,10 @@ DEBUG = True
 ALLOWED_HOSTS = ['*']
 
 
+# Allow trusted origins
+CSRF_TRUSTED_ORIGINS = ['http://travit-staging.ca']
+
+
 # Application definition
 
 INSTALLED_APPS = [
