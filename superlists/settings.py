@@ -21,17 +21,18 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-q%q2(!qv$=jr(xzm&xv@-6z%4^88ja*19-2dx5!3pd6=ot)p4v'
-
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
-
-ALLOWED_HOSTS = ['*']
+if 'DJANGO_DEBUG_FALSE' in os.environ:
+    DEBUG = False
+    SECRET_KEY = os.environ['DJANGO_SECRET_KEY']
+    ALLOWED_HOSTS = [os.environ['SITENAME']]
+else:
+    DEBUG = True
+    SECRET_KEY = 'django-insecure-q%q2(!qv$=jr(xzm&xv@-6z%4^88ja*19-2dx5!3pd6=ot)p4v'
+    ALLOWED_HOSTS = ['*']
 
 
 # Allow trusted origins
-CSRF_TRUSTED_ORIGINS = ['http://travit-staging.ca', 'http://99.79.31.227']
-
+CSRF_TRUSTED_ORIGINS = ['http://travit-staging.ca', 'http://35.183.15.252']
 
 # Application definition
 
