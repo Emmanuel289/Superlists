@@ -7,11 +7,17 @@ def home_page(request):
     return render(request, 'home.html')
 
 
-def view_list(request, list_id):
+def view_delete_list(request, list_id):
     list_ = List.objects.get(id=list_id)
     if request.method == 'POST':
         Item.objects.create(text=request.POST['item_text'], list=list_)
         return redirect(f'/lists/{list_.id}/')
+    if request.method == 'DELETE':
+        list_items = Item.objects.all().filter(list=list_)
+        for item in list_items:
+            item.delete()
+        list_.delete()
+        return redirect('/')
     return render(request, 'list.html', {'list': list_})
 
 def new_list(request):
