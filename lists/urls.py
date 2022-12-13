@@ -16,6 +16,6 @@ Including another URLconf
 from django.urls import path
 from lists import views
 urlpatterns = [
-    path('new', views.new_list, name='new list'),
+    path('new', views.new_list, name='new_list'),
     path('<int:list_id>/', views.view_delete_list, name='view_delete_list'),
 ]
