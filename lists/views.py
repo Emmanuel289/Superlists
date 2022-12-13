@@ -9,16 +9,23 @@ def home_page(request):
 
 def view_delete_list(request, list_id):
     list_ = List.objects.get(id=list_id)
+    error = None
     if request.method == 'POST':
-        Item.objects.create(text=request.POST['item_text'], list=list_)
-        return redirect(f'/lists/{list_.id}/')
+        try:
+            item = Item.objects.create(text=request.POST['item_text'], list=list_)
+            item.full_clean()
+            item.save()
+            return redirect(f'/lists/{list_.id}/')
+        except ValidationError:
+            item.delete()
+            error = "You can't have an empty list item"
     if request.method == 'DELETE':
         list_items = Item.objects.all().filter(list=list_)
         for item in list_items:
             item.delete()
         list_.delete()
         return redirect('/')
-    return render(request, 'list.html', {'list': list_})
+    return render(request, 'list.html', {'list': list_, 'error': error})
 
 def new_list(request):
     list_ = List.objects.create()
