@@ -1,7 +1,9 @@
+from django.core.exceptions import ValidationError
 from django import forms
 from lists.models import Item
 
 EMPTY_ITEM_ERROR = "You can't have an empty list item"
+DUPLICATE_ITEM_ERROR = "You've already got this in your list"
 class ItemForm(forms.models.ModelForm):
     # Django provides the ModelForm class which can be used to  autogenerate
     # a form for a model. It's configured using the special attribute 'Meta'
@@ -27,3 +29,17 @@ class ItemForm(forms.models.ModelForm):
         # the instance attribute on a form represents the database object that is being modified or created
         self.instance.list = for_list 
         return super().save()
+
+
+class ExistingListItemForm(ItemForm):
+    def __init__(self, for_list, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.instance.list = for_list
+
+    def validate_unique(self):
+        try:
+            self.instance.validate_unique()
+        except ValidationError as e:
+            # Take the validation error, modify its error message, and pass it back to the form
+            e.error_dict = {'text': [DUPLICATE_ITEM_ERROR]}
+            self._update_errors(e)
