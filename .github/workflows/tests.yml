@@ -1,10 +1,12 @@
-name: Tests
-run-name: Tests runner
+name: Run unit tests
+run-name: Unit tests runner
 on: [push]
 jobs:
   check-bats-version:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - run: echo 'Running tests'
-      - run: echo 'Test run completed'
+      - run: |
+          echo 'Running tests'
+          ./runtests unit
+          echo 'Unit tests completed'
