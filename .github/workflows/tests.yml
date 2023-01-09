@@ -5,9 +5,9 @@ jobs:
   run-unittests:
     runs-on: ubuntu-latest
     steps:
-      - step: Checkout master branch
-        - uses: actions/checkout@v3
-      - step: Install Django
-        - run: pip install -r requirements.txt
-      - step: Run Unit Tests
-        - run:  ./runtests unit
+      - name: Checkout master branch
+        uses: actions/checkout@v3
+      - name : Install Django
+        run: pip install -r requirements.txt
+      - name: Run Unit Tests
+        run:  ./runtests unit
