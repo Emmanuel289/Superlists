@@ -1,9 +1,10 @@
-name: 'Run Tests'
-on: push
-
+name: Tests
+run-name: Tests runner
+on: [push]
 jobs:
-  run-tests
-  steps: 'Functional Tests' 
+  check-bats-version:
+    runs-on: ubuntu-latest
+    steps:
       - uses: actions/checkout@v3
-      - run: echo 'Running Tests'
-      - run: echo 'Finished running tests'
+      - run: echo 'Running tests'
+      - run: echo 'Test run completed'
