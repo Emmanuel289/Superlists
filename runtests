@@ -1,5 +1,5 @@
 #!/bin/bash
-# Run database migrations before testing
+# Run migrations to spike database before testing
 python manage.py makemigrations && python manage.py migrate
 
 if [ $# == 0 ]; then
