@@ -1,5 +1,6 @@
 #!/bin/bash
 cd ~/Desktop/python-tdd-book
+python -m venv virtualenv
 . virtualenv/bin/activate
 
 
