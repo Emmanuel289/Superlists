@@ -43,3 +43,6 @@ class ExistingListItemForm(ItemForm):
             # Take the validation error, modify its error message, and pass it back to the form
             e.error_dict = {'text': [DUPLICATE_ITEM_ERROR]}
             self._update_errors(e)
+
+    def save(self):
+        return forms.models.ModelForm.save(self)
