@@ -1,0 +1,24 @@
+#!/bin/bash
+cd ~/Desktop/python-tdd-book
+. virtualenv/bin/activate
+
+
+if [ $# == 0 ]; then
+    cmd="python manage.py test"
+    echo running all tests
+    sleep 2
+    ${cmd}
+elif [ $1 == 'unit' ]; then
+    cmd="python manage.py test lists"
+    echo Running unit tests...
+    sleep 2
+    ${cmd}
+elif [ $1 == 'functional' ]; then
+    cmd="python manage.py test functional_tests"
+    echo running functional tests..
+    sleep 2
+    ${cmd}
+elif [ $1 != 'unit' ] || [ $1 != 'functional' ]; then
+    echo invalid arguments
+fi
+
