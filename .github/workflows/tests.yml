@@ -1,0 +1,9 @@
+name: 'Run Tests'
+on: push
+
+jobs:
+  run-tests
+  steps: 'Functional Tests' 
+      - uses: actions/checkout@v3
+      - run: echo 'Running Tests'
+      - run: echo 'Finished running tests'
