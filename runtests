@@ -1,8 +1,4 @@
 #!/bin/bash
-cd ~/Desktop/python-tdd-book
-python -m venv virtualenv
-. virtualenv/bin/activate
-
 
 if [ $# == 0 ]; then
     cmd="python manage.py test"
