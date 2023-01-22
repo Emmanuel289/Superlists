@@ -11,7 +11,7 @@ class ItemForm(forms.models.ModelForm):
         model = Item  # model specifies which model the form is for
         # fields specifies which fields in the model we want the form to use. In this case the text field of Item
         fields = ('text', )
-        # You can override widgets for ModelForm fields to customize the form's UIs
+        # You can override widgets for ModelForm fields to customize the form's UI
         widgets = {
             'text': forms.fields.TextInput(attrs={
                 'placeholder': 'Enter a to-do item',

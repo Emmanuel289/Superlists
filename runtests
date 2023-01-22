@@ -1,5 +1,5 @@
 #!/bin/bash
-# Run migrations to spike database before testing
+# Run migrations to update db
 python manage.py makemigrations && python manage.py migrate
 
 if [ $# == 0 ]; then
@@ -8,7 +8,7 @@ if [ $# == 0 ]; then
     sleep 2
     ${cmd}
 elif [ $1 == 'unit' ]; then
-    cmd="python manage.py test lists"
+    cmd="python manage.py test -v 2 lists accounts.tests.test_models"
     echo Running unit tests...
     sleep 2
     ${cmd}
