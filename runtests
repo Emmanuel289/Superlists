@@ -3,17 +3,17 @@
 python manage.py makemigrations && python manage.py migrate
 
 if [ $# == 0 ]; then
-    cmd="python manage.py test"
+    cmd="python manage.py test -v 2 functional_tests lists accounts.tests.test_models accounts.tests.test_views accounts.tests.test_authentication"
     echo running all tests
     sleep 2
     ${cmd}
 elif [ $1 == 'unit' ]; then
-    cmd="python manage.py test -v 2 lists accounts.tests.test_models"
+    cmd="python manage.py test -v 2 lists accounts.tests.test_models accounts.tests.test_views accounts.tests.test_authentication"
     echo Running unit tests...
     sleep 2
     ${cmd}
 elif [ $1 == 'functional' ]; then
-    cmd="python manage.py test functional_tests"
+    cmd="python manage.py test -v 2 functional_tests"
     echo running functional tests..
     sleep 2
     ${cmd}
