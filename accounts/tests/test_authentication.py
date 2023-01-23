@@ -2,7 +2,6 @@ from django.test import TestCase
 from django.contrib.auth import get_user_model
 from accounts.authentication import PasswordlessAuthenticationBackend
 from accounts.models import Token
-import ipdb
 
 User = get_user_model()  # get_user_model returns the active User model
 
