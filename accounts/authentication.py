@@ -1,5 +1,4 @@
 from accounts.models import Token, User
-import ipdb
 
 class PasswordlessAuthenticationBackend:
     
