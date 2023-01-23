@@ -135,6 +135,8 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+# LOGIN URL
+LOGIN_URL = '/'
 
 # EMAIL SETTINGS
 EMAIL_HOST = 'smtp-relay.gmail.com'
