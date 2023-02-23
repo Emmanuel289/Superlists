@@ -1,4 +1,5 @@
 from django.shortcuts import redirect, render
+from django.http import HttpResponse
 from lists.forms import ExistingListItemForm, ItemForm
 from lists.models import Item, List
 # Create your views here.
@@ -24,3 +25,6 @@ def new_list(request):
         return redirect(list_)
     else:
         return render(request, 'home.html', {"form": form})
+    
+def my_lists(request, email):
+    return render(request, 'my_lists.html')
